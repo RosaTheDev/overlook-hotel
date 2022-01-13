@@ -24,4 +24,12 @@ describe('Booking', () => {
     it('Should be able to hold onto a date', () => {
         expect(booking.date).to.equal(bookingData[0].date)
     })
+
+    it('Should be able to hold a room number', () => {
+        expect(booking.roomNumber).to.equal(bookingData[0].roomNumber)
+    })
+
+    it('Should be able to hold onto room service charges', () => {
+        expect(booking.roomServiceCharges).to.equal(bookingData[0].roomServiceCharges)
+    })
 })
