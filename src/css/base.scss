@@ -1,6 +1,41 @@
 /* This is an example of how to import a partial scss file*/
 @import '_variables';
 
-body {
-  background: $primary-background;
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  nav {
+  background: #FFFFFF;
+  display: flex;
+  align-content: stretch;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  }
+
+  .welcome-message {
+    color: black;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  nav {
+    background: #000000;
+    display: flex;
+    align-content: stretch;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+  }
+  
+  .welcome-message {
+    color: #ffffff;
+  }
+}
+
+
+.calendar {
+  display: flex;
+  justify-content: center;
 }
