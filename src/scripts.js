@@ -9,3 +9,9 @@ import './images/turing-logo.png'
 
 
 console.log('This is the JavaScript entry file - your code begins here.');
+
+
+var dateControl = document.querySelector('input[type="date"]');
+dateControl.value
+console.log(dateControl.value);
+console.log(dateControl.valueAsNumber)
