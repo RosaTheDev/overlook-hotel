@@ -20,4 +20,8 @@ describe('Booking', () => {
     it('Should be able to hold a userID', () => {
         expect(booking.userID).to.equal(bookingData[0].userID)
     })
+
+    it('Should be able to hold onto a date', () => {
+        expect(booking.date).to.equal(bookingData[0].date)
+    })
 })
