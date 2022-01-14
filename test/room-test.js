@@ -15,18 +15,22 @@ describe('Room', () => {
   });
 
   it('Should have a number for the room', () => {
-    expect(room.number).to.equal(roomData[0].number)
+    expect(room.number).to.equal(roomData[0].number);
   });
 
   it('Should have a room type', () => {
-    expect(room.roomType).to.equal(roomData[0].roomType)
+    expect(room.roomType).to.equal(roomData[0].roomType);
   });
 
   it('should check to see if the room has a bidet', () => {
-    expect(room.hasBidet).to.equal(roomData[0].bidet)
+    expect(room.hasBidet).to.equal(roomData[0].bidet);
   });
 
   it('Should check the size of the bed', () => {
-    expect(room.bedSize).to.equal(roomData[0].bedSize)
+    expect(room.bedSize).to.equal(roomData[0].bedSize);
   });
+
+  it('Should check to see how many beds are in the room', () => {
+    expect(room.numBeds).to.equal(roomData[0].numBeds);
+  })
 })
