@@ -28,3 +28,4 @@ const customer =[
     "name": "Kennedi Emard"
   }
 ]
+export default customer
