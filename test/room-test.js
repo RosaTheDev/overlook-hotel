@@ -24,7 +24,9 @@ describe('Room', () => {
 
   it('should check to see if the room has a bidet', () => {
     expect(room.hasBidet).to.equal(roomData[0].bidet)
-  })
+  });
 
-
+  it('Should check the size of the bed', () => {
+    expect(room.bedSize).to.equal(roomData[0].bedSize)
+  });
 })
