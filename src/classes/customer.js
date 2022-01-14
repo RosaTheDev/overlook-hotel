@@ -2,17 +2,22 @@ class Customer {
   constructor(customer, bookings) {
     this.id = customer.id;
     this.name = customer.name;
-    this.bookedID = bookings.id;
-    this.bookedDate = bookings.date
     this.userId = bookings.userID;
     this.hasMatchingId = false;
+    this.bookings = bookings
+    this.apology = `I'm so sorry ${this.name}, please adjust your dates`
   }
   
-  matchingID() {
+  matchingBooking() {
     if (this.id === this.userId) {
-      return this.hasMatchingId = true;
+      this.hasMatchingId = true;
+      return this.bookings;
     }
-    return this.hasMatchingId;
+    //show whats left over
+    this.hasMatchingId;
+    return this.apology;
   }
+
+ 
 }
 export default Customer;

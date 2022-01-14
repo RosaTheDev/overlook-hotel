@@ -30,6 +30,7 @@ describe('Booking', () => {
   })
 
   it('Should be able to hold onto room service charges', () => {
+    // eslint-disable-next-line max-len
     expect(booking.roomServiceCharges).to.equal(bookingData[0].roomServiceCharges)
   })
 })

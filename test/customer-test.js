@@ -24,23 +24,23 @@ describe('Customer', () => {
     expect(customer.name).to.equal(customerData[0].name);
   });
 
-  it('Should check the id of the rooms the customer booked', () =>{
-    expect(customer.bookedID).to.equal(bookingData[0].id);
-  });
-
   it('Should match the booking userId with the customerId', () => {
-    customer.matchingID()
-
+    customer.matchingBooking()
     expect(customer.hasMatchingId).to.equal(true)
   });
 
   it('Should return false if bookingId and customerId dont match', () => {
     customer = new Customer(customerData[1], bookingData[0]);
-    customer.matchingID();
+    customer.matchingBooking();
     expect(customer.hasMatchingId).to.equal(false);
   });
 
-  it('Should keep the date the room is booked with the customer', () => {
-    expect(customer.bookedDate).to.equal(bookingData[0].date);
+  it('Should return the booking that the customer made', () => {
+    expect(customer.matchingBooking()).to.equal(bookingData[0]);
+  });
+
+  it('Should return an apology if the bookings do not match', () => {
+    customer = new Customer(customerData[0], bookingData[1]);
+    expect(customer.matchingBooking()).to.equal(customer.apology)
   })
 });
