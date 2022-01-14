@@ -1,4 +1,4 @@
-const customer =[
+const customer = [
   {
     "id": 14,
     "name": "Dallas Schultz"
