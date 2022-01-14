@@ -35,7 +35,10 @@ describe('Customer', () => {
   });
 
   it('Should return false if bookingId and customerId dont match', () => {
+    customer = new Customer(customerData[1], bookingData[0]);
+    customer.matchingID();
+    expect(customer.hasMatchingId).to.equal(false);
+  });
 
-  })
-
+  
 });

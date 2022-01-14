@@ -4,13 +4,14 @@ class Customer {
     this.name = customer.name;
     this.bookedID = bookings.id;
     this.userId = bookings.userID;
-    this.hasMatchingId;
+    this.hasMatchingId = false;
   }
   
   matchingID() {
     if (this.id === this.userId) {
-      this.hasMatchingId = true
+      return this.hasMatchingId = true;
     }
+    return this.hasMatchingId;
   }
 }
 export default Customer;
