@@ -1,6 +1,6 @@
 class Customer {
-  constructor() {
-
+  constructor(customer) {
+    this.id = customer.id;
   }
 }
 export default Customer;

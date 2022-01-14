@@ -13,4 +13,8 @@ describe('Customer', () => {
   it('Should be a function', () => {
     expect(Customer).to.be.a('function');
   });
+
+  it('Should have an Id', () => {
+    expect(customer.id).to.equal(customerData[0].id)
+  });
 });
