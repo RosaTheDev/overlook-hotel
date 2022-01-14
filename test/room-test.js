@@ -16,5 +16,8 @@ describe('Room', () => {
   it('Should have a number for the room', () => {
     expect(room.number).to.equal(roomData[0].number)
   })
-  
+
+  it('Should have a room type', () => {
+    expect(room.roomType).to.equal(roomData[0].roomType)
+  })
 })
