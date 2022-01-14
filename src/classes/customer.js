@@ -3,6 +3,7 @@ class Customer {
     this.id = customer.id;
     this.name = customer.name;
     this.bookedID = bookings.id;
+    this.bookedDate = bookings.date
     this.userId = bookings.userID;
     this.hasMatchingId = false;
   }

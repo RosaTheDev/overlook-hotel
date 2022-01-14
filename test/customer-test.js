@@ -40,5 +40,7 @@ describe('Customer', () => {
     expect(customer.hasMatchingId).to.equal(false);
   });
 
-  
+  it('Should keep the date the room is booked with the customer', () => {
+    expect(customer.bookedDate).to.equal(bookingData[0].date);
+  })
 });
