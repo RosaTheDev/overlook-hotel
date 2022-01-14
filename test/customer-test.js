@@ -42,5 +42,5 @@ describe('Customer', () => {
   it('Should return an apology if the bookings do not match', () => {
     customer = new Customer(customerData[0], bookingData[1]);
     expect(customer.matchingBooking()).to.equal(customer.apology)
-  })
+  });
 });
