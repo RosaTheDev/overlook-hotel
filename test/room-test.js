@@ -35,6 +35,6 @@ describe('Room', () => {
   });
 
   it('Should check the cost per night', () => {
-    expect(room.costPerNight).to.equal(roomData[[0].costPerNight]);
+    expect(room.costPerNight).to.equal(roomData[0].costPerNight);
   });
 });
