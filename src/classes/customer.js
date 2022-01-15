@@ -19,8 +19,7 @@ class Customer {
   }
 
   calculateTotalCost(rooms) {
-    // console.log(this.presentBookings)
-    // console.log(rooms)
+
     let totalCostArray = this.presentBookings.map(booking => {
       let foundRooom = rooms.filter(room => {
         if (room.number === booking.roomNumber) {
@@ -34,8 +33,8 @@ class Customer {
       acc += room[0].costPerNight;
       return acc
     }, 0)
-    return totalCost
-   
+
+    return Math.round(totalCost * 100) / 100
   }
 }
 export default Customer;
