@@ -1,4 +1,4 @@
-const customer =[
+const customer = [
   {
     "id": 14,
     "name": "Dallas Schultz"
@@ -26,6 +26,10 @@ const customer =[
   {
     "id": 4,
     "name": "Kennedi Emard"
+  },
+  {
+    "id": 5005,
+    "name": "Kenny Beats"
   }
 ]
 export default customer

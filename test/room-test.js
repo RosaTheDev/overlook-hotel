@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import roomData from './test-data/room-data'
 import Room from '../src/classes/room'
+import customer from './test-data/customer-data';
 
 
 describe('Room', () => {
@@ -37,4 +38,5 @@ describe('Room', () => {
   it('Should check the cost per night', () => {
     expect(room.costPerNight).to.equal(roomData[0].costPerNight);
   });
+
 });
