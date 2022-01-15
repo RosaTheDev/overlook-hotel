@@ -7,7 +7,7 @@ import roomData from './test-data/room-data'
 describe('Booking', () => {
   let booking;
   beforeEach(() => {
-    booking = new Booking(bookingData[0], roomData[0]);
+    booking = new Booking(bookingData[0]);
   });
 
   it('Should be a function', () => {
@@ -35,7 +35,4 @@ describe('Booking', () => {
     expect(booking.roomServiceCharges).to.equal(bookingData[0].roomServiceCharges);
   });
 
-  it('Should match the roomNumber with the room', () => {
-    expect(booking.matchedRooms()).to.equal(roomData[0]);
-  });
 })

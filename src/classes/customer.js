@@ -1,23 +1,41 @@
 class Customer {
-  constructor(customer, bookings) {
+  constructor(customer) {
     this.id = customer.id;
     this.name = customer.name;
-    this.userId = bookings.userID;
-    this.hasMatchingId = false;
-    this.bookings = bookings
-    this.apology = `I'm so sorry ${this.name}, please adjust your dates`
-  }
-  
-  matchingBooking() {
-    if (this.id === this.userId) {
-      this.hasMatchingId = true;
-      return this.bookings;
-    }
-    //show whats left over
-    this.hasMatchingId;
-    return this.apology;
+    this.presentBookings = [];
+    this.apology = `I'm so sorry ${this.name}, please adjust your dates`;
   }
 
- 
+  currentBookings(bookings) {
+    bookings.filter(booking => {
+      if (booking.userID === this.id) {
+        return this.presentBookings.push(booking);
+      }
+    })
+
+    if (this.presentBookings.length === 0) {
+      return this.apology
+    }
+  }
+
+  calculateTotalCost(rooms) {
+    // console.log(this.presentBookings)
+    // console.log(rooms)
+    let totalCostArray = this.presentBookings.map(booking => {
+      let foundRooom = rooms.filter(room => {
+        if (room.number === booking.roomNumber) {
+          return room;
+        }
+      })
+      return foundRooom
+    })
+    
+    let totalCost = totalCostArray.reduce((acc, room) => {
+      acc += room[0].costPerNight;
+      return acc
+    }, 0)
+    return totalCost
+   
+  }
 }
 export default Customer;
