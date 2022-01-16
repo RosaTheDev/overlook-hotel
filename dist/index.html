@@ -16,7 +16,7 @@
     </section>
   </nav>
 
-  <section class="login">
+  <section class="login hidden">
     <h1 class="login-message">login pls</h1>
     <div class="userName-passwordSection">
       <label for="username"><b>User Name</b></label>
@@ -27,7 +27,7 @@
     </div>
   </section>
 
-  <section class="dashboard hidden">
+  <section class="main-dashboard">
 
     <form>
       <div class="calendar">
@@ -43,6 +43,28 @@
       
     </div>
   </section>
+
+  <section class="booking-a-room hidden">
+      <form>
+        <div class="calendar">
+          <label for="start">Start date:</label>
+          <input type="date" id="start" name="trip-start" min="2022-01-01" max="2022-12-31" required>
+          <input type="submit" id='checkInBtn'>
+
+            <label for="selecting-rooms">Filter By Room Type:</label>
+            <select name="room-types" id="room-types">
+              <option value="none" selected disabled hidden>Room Type</option>
+              <option value="residential suite">Residential Suite</option>
+              <option value="Junior Suite">Junior Suite</option>
+              <option value="Suite">Suite</option>
+              <option value="Single Room">Single Room</option>
+            </select>
+        </div>
+      </form>
+
+  </section>
+
+
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 

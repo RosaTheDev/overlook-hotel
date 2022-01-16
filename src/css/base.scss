@@ -38,6 +38,9 @@
   justify-content: center;
 }
 
+#checkInBtn {
+  cursor: pointer;
+}
 .welcome-user {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -83,8 +86,10 @@ button {
   margin:  8px 0;
   border: none;
   cursor: pointer;
-  // width: 100%;
+}
 
+#room-types:hover {
+  cursor: pointer;
 }
 .hidden {
   display: none;
