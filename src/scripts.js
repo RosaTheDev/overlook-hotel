@@ -11,20 +11,12 @@ import './images/turing-logo.png'
 console.log('This is the JavaScript entry file - your code begins here.');
 
 
-
-
 import domUpdates from './domUpdates';
 
 import { calendarSubmitBtn } from './domUpdates';
-
-
 
 window.addEventListener('load', domUpdates.welcomeUserMessage())
 
 calendarSubmitBtn.addEventListener('click', function(event) {
   domUpdates.grabdate(event)
 })
-
-
-
-
