@@ -39,4 +39,25 @@ describe('Customer', () => {
     customer.currentBookings(bookingData);
     expect(customer.calculateTotalCost(roomData)).to.equal(856.04);
   })
+
+  it('Should check the closed rooms', () => {
+    customer = new Customer(customerData)
+    let closed = customer.checkClosedRooms(bookingData);
+    expect(closed).to.equal(customer.closedBookings);
+  });
+
+  it('Should check the open rooms', () => {
+    customer = new Customer(customerData)
+    let open = customer.checkOpenRooms(bookingData);
+    expect(open).to.equal(customer.openRooms);
+  });
+
+  it('Should check the open rooms by the date', () => {
+    customer = new Customer(customerData)
+    customer.checkClosedRooms(bookingData)
+    customer.checkOpenRooms(bookingData)
+    let open = customer.checkOpenRoomsDates('2022/01/15');
+    expect(open).to.equal(customer.openBooking);
+  });
+  
 });
