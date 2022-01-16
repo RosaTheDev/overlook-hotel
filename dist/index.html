@@ -12,10 +12,13 @@
     <button class="login-btn">Login</button>
   </nav>
 
-    <div class="calendar">
-      <label for="start">Start date:</label>
-      <input type="date" id="start" name="trip-start" value="2022-01-01" min="2022-01-01" max="2022-12-31">
-    </div>
+<form>
+  <div class="calendar">
+    <label for="start">Start date:</label>
+    <input type="date" id="start" name="trip-start" min="2022-01-01" max="2022-12-31" required>
+    <input type="submit" id='checkInBtn'>
+  </div>
+</form>
 
     <h1 class="welcome-user">Welcome, User You Spent $3,000 On Rooms So Far</h1>
     <div class="dashboard">
