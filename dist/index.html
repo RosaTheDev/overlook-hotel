@@ -9,21 +9,63 @@
 <body>
   <nav>
     <h2 class="welcome-message">Welcome To The Overlook Hotel</h2>
-    <button class="login-btn">Login</button>
+    <!-- <button class="login-btn">Login</button> -->
+    <section class="navBtns">
+      <button type="submit">Bookings</button>
+      <button type="submit">Check In</button>
+    </section>
   </nav>
 
-<form>
-  <div class="calendar">
-    <label for="start">Start date:</label>
-    <input type="date" id="start" name="trip-start" min="2022-01-01" max="2022-12-31" required>
-    <input type="submit" id='checkInBtn'>
-  </div>
-</form>
+  <section class="login hidden">
+    <h1 class="login-message">login pls</h1>
+    <div class="userName-passwordSection">
+      <label for="username"><b>User Name</b></label>
+      <input type="text" placeholder="Enter Username" name="username" required>
+      <label for="password"><b>Password</b></label>
+      <input type="text" placeholder="Enter Password" name="password" required>
+      <button type="submit">Login</button>
+    </div>
+  </section>
+
+
+  <section class="main-dashboard">
+
+    <form>
+      <div class="calendar">
+        <label for="start">Start date:</label>
+        <input type="date" id="start" name="trip-start" min="2022-01-01" max="2022-12-31" required>
+        <input type="submit" id='checkInBtn'>
+      </div>
+    </form>
+    
     <h1 class="welcome-user">Welcome, User You Spent $3,000 On Rooms So Far</h1>
     <div class="dashboard">
       <!-- welcome user will be replaced later with dom manipulation -->
-
+      
     </div>
+  </section>
+
+  <section class="booking-a-room hidden">
+      <form>
+        <div class="calendar">
+          <label for="start">Start date:</label>
+          <input type="date" id="start" name="trip-start" min="2022-01-01" max="2022-12-31" required>
+          <input type="submit" id='checkInBtn'>
+
+            <label for="selecting-rooms">Filter By Room Type:</label>
+            <select name="room-types" id="room-types">
+              <option value="none" selected disabled hidden>Room Type</option>
+              <option value="residential suite">Residential Suite</option>
+              <option value="Junior Suite">Junior Suite</option>
+              <option value="Suite">Suite</option>
+              <option value="Single Room">Single Room</option>
+            </select>
+        </div>
+      </form>
+
+  </section>
+
+
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 

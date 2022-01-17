@@ -1,7 +1,4 @@
 import Customer from './classes/customer';
-import customerData from '../test/test-data/customer-data'
-import bookingData from '../test/test-data/booking-data'
-import roomData from '../test/test-data/room-data'
 
 // Query Selectors
 const welcomeMessage = document.querySelector('.welcome-user');
@@ -10,17 +7,15 @@ const dateControl = document.querySelector('input[type="date"]');
 const calendarSubmitBtn = document.querySelector('input[type="submit"]')
 
 const domUpdates = {
-  welcomeUserMessage() {
-  
-    const customer = new Customer(customerData[0]);
-    customer.currentBookings(bookingData)
-    const totalCost = customer.calculateTotalCost(roomData)
+  welcomeUserMessage(customers, bookings, rooms, customer) {
+    this.currentBookings
+    customer.currentBookings(bookings)
+    const totalCost = customer.calculateTotalCost(rooms)
     console.log(totalCost)
-    welcomeMessage.innerHTML = `<h2>Welcome To The Overlook Hotel ${customer.name}</h2> 
-  <h2>You Spent: $ ${totalCost} So Far On Rooms!</h2>`
-
+    console.log(customer)
     console.log(customer.presentBookings)
-
+    welcomeMessage.innerHTML = `<h2>Welcome To The Overlook Hotel ${customer.name}</h2> 
+  <h2>You Spent: $ ${totalCost}  So Far On Rooms!</h2>`
     customer.presentBookings.forEach(booking => {
       bookingInfoPage.innerHTML += `<section>
     <h2>Booking Information:</h2>
@@ -29,8 +24,6 @@ const domUpdates = {
     <h2>Room Number: ${booking.roomNumber}</h2>
     </section>`
     })
-
- 
   },
 
   grabdate(event) {
