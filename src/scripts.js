@@ -13,12 +13,12 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 
 
-import domUpdates from './domUpdates';
+import domUpdates, { bookNow, BookRoomBtn } from './domUpdates';
 import Customer from './classes/customer';
 import Booking from './classes/booking'
 import Room from './classes/room';
 
-import { calendarSubmitBtn } from './domUpdates';
+import { calendarSubmitBtn, loginBtn } from './domUpdates';
 import { bookingsData, customersData, roomsData } from './apiCalls';
 
 let customers;
@@ -26,7 +26,7 @@ let customer
 let bookings;
 let rooms;
 
-
+// on page load
 const loadPage = () => {
   Promise.all([customersData, bookingsData, roomsData])
     .then(data => {
@@ -34,7 +34,8 @@ const loadPage = () => {
       customers  = data[0].customers.map(customer => {
         return new Customer(customer)
       })
-      //random customerss
+
+      //random customers
       customer = new Customer(customers[Math.floor(Math.random() * customers.length)])
       // console.log(customer)
 
@@ -49,22 +50,29 @@ const loadPage = () => {
         return new Room(room)
       })
       // console.log(rooms)
-      domUpdates.welcomeUserMessage(customers, bookings, rooms, customer)
+      
+      //change this to grab the user id and password
+      domUpdates.welcomeUserMessage(customer, bookings, rooms)
     })
 }
-
-
-
-
-
-
-
 
 
 window.addEventListener('load', function() {
   loadPage()
 })
+// change this
+loginBtn.addEventListener('click', function(event) {
+  console.log(event)
+  domUpdates.hideLoginPage()
+  domUpdates.showUserDashboard()
+}) 
+//  to be when the user clicks the login button
 
+BookRoomBtn.addEventListener('click', function(event) {
+  console.log(event)
+  domUpdates.hideUserDashboard();
+  domUpdates.showBookingPage
+})
 calendarSubmitBtn.addEventListener('click', function(event) {
   domUpdates.grabdate(event)
 })

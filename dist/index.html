@@ -7,27 +7,30 @@
   <title>Webpack Starter Kit</title>
 </head>
 <body>
-  <nav>
-    <h2 class="welcome-message">Welcome To The Overlook Hotel</h2>
-    <!-- <button class="login-btn">Login</button> -->
-    <section class="navBtns">
-      <button type="submit">Bookings</button>
-      <button type="submit">Check In</button>
-    </section>
-  </nav>
-
-  <section class="login hidden">
+  <!--first thing is login -->
+  <section class="login ">
+    <nav>
+      <h2 class="welcome-message">Welcome To The Overlook Hotel</h2>
+    </nav>
     <h1 class="login-message">login pls</h1>
     <div class="userName-passwordSection">
       <label for="username"><b>User Name</b></label>
       <input type="text" placeholder="Enter Username" name="username" required>
       <label for="password"><b>Password</b></label>
       <input type="text" placeholder="Enter Password" name="password" required>
-      <button type="submit">Login</button>
+      <button type="submit" class='login-page-btn'>Login</button>
     </div>
   </section>
 
+  <!-- When the user logs in they see their dashboard -->
   <section class="main-dashboard hidden">
+      <nav>
+        <h2 class="welcome-message">Welcome To The Overlook Hotel</h2>
+        <section class="navBtns">
+              <button type="submit" id='book-now-btn'>Book Now</button>
+              <!-- <button type="submit" class='navToCheckIn' id='navToCheckIn'>Check In</button> -->
+            </section>
+      </nav>
 
     <form>
       <div class="calendar">
@@ -44,12 +47,12 @@
     </div>
   </section>
 
-  <section class="booking-a-room ">
+  <section class="booking-a-room hidden">
       <form>
         <div class="calendar">
-          <label for="start">Start date:</label>
-          <input type="date" id="start" name="trip-start" min="2022-01-01" max="2022-12-31" required>
-          <input type="submit" id='checkInBtn'>
+          <label for="calendar-start">Start date:</label>
+          <input type="date" id="calendar-start" name="trip-start" min="2022-01-01" max="2022-12-31" required>
+          <input type="submit" id='calendarCheckInBtn'>
 
             <label for="selecting-rooms">Filter By Room Type:</label>
             <select name="room-types" id="room-types">
@@ -61,6 +64,9 @@
             </select>
         </div>
       </form>
+      <div class='checkin-board'>
+        <!-- dom manipulation goes here -->
+      </div>
 
   </section>
 
