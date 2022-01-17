@@ -1,14 +1,15 @@
-const fetchData = (api) => 
+
+let fetchData = (api) => 
   fetch(`http://localhost:3001/api/v1/${api}`)
     .then(response => response.json())
 
-const customersData = fetchData('customers')
+let customersData = fetchData('customers')
 
-const roomsData = fetchData('rooms')
+let bookingsData = fetchData('bookings')
 
-const bookingsData = fetchData('bookings')
+let roomsData = fetchData('rooms')
 
-const postBooking = (data) => {
+let postBooking = (data) => {
 
   return fetch(`http://localhost:3001/api/v1/customers`, {
     method: 'POST',

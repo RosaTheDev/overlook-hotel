@@ -7,6 +7,7 @@ class Customer {
   }
 
   currentBookings(bookings) {
+    
     bookings.filter(booking => {
       if (booking.userID === this.id) {
         return this.presentBookings.push(booking);
