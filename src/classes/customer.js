@@ -3,11 +3,13 @@ class Customer {
     this.id = customer.id;
     this.name = customer.name;
     this.presentBookings = [];
+    this.unavailableRooms = [];
+    this.availableRooms = [];
+    this.filteredRoomTypes = [];
     this.apology = `I'm so sorry ${this.name}, please adjust your dates`;
   }
 
   currentBookings(bookings) {
-    
     bookings.filter(booking => {
       if (booking.userID === this.id) {
         return this.presentBookings.push(booking);
@@ -17,6 +19,37 @@ class Customer {
     if (this.presentBookings.length === 0) {
       return this.apology
     }
+  }
+
+  bookingByDate(date, bookings) {
+    bookings.filter(booking => {
+      if (booking.date === date) {
+        return this.unavailableRooms.push(booking);
+      }
+    })
+    // console.log(this.unavailableRooms)
+  }
+
+  findAvailableRooms(rooms) {
+    let unavailableRooms = this.unavailableRooms.map(unavailableRoom => unavailableRoom.roomNumber);
+    let available = rooms.reduce((acc, room) => {
+      if (room.number !== unavailableRooms.roomNumber) {
+        acc.push(room)
+      }
+      return acc
+    }, [])
+    this.availableRooms = available
+    // console.log(available)
+  }
+
+  filterByRoomType(roomPrefrance) {
+    
+    this.availableRooms.filter(room => {
+      if (room.roomType === roomPrefrance) {
+        this.filteredRoomTypes.push(room)
+      }
+    })
+    console.log(this.filteredRoomTypes)
   }
 
   calculateTotalCost(rooms) {
