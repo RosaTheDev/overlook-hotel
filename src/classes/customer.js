@@ -1,8 +1,12 @@
 class Customer {
   constructor(customer) {
+    this.customers = customer;
     this.id = customer.id;
     this.name = customer.name;
     this.presentBookings = [];
+    this.closedBookings = [];
+    this.openRooms = [];
+    this.openBooking = [];
     this.apology = `I'm so sorry ${this.name}, please adjust your dates`;
   }
 
@@ -18,8 +22,43 @@ class Customer {
     }
   }
 
-  calculateTotalCost(rooms) {
+  checkClosedRooms(bookings) {
+    return bookings.reduce((acc, booking) => {
+      this.customers.forEach(customer => {
+        if (customer.id === booking.userID && !acc.includes(booking)) {
+          acc.push(booking)
+        }
+      })
+      this.closedBookings = acc
+      return acc 
+    }, [])
 
+  }
+
+  checkOpenRooms(bookings) {
+    return bookings.reduce((acc, booking) => {
+      this.closedBookings.forEach(closedRoom => {
+        if (closedRoom.id !== booking.id && !acc.includes(booking)) {
+          acc.push(booking)
+        }
+      })
+      this.openRooms = acc
+      return acc
+    }, [])
+  }
+
+  checkOpenRoomsDates(date) {
+    this.openRooms.filter(openRoom => {
+      if (openRoom.date === date) {
+        this.openBooking.push(openRoom)
+      }
+    })
+    return this.openBooking
+
+  }
+
+
+  calculateTotalCost(rooms) {
     let totalCostArray = this.presentBookings.map(booking => {
       let foundRooom = rooms.filter(room => {
         if (room.number === booking.roomNumber) {

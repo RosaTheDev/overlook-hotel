@@ -34,5 +34,4 @@ describe('Booking', () => {
     // eslint-disable-next-line max-len
     expect(booking.roomServiceCharges).to.equal(bookingData[0].roomServiceCharges);
   });
-
 })
