@@ -10,11 +10,9 @@ import './images/turing-logo.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
-
-
-
 import domUpdates from './domUpdates';
 import Customer from './classes/customer';
+
 import Booking from './classes/booking'
 import Room from './classes/room';
 
@@ -52,14 +50,6 @@ const loadPage = () => {
       domUpdates.welcomeUserMessage(customers, bookings, rooms, customer)
     })
 }
-
-
-
-
-
-
-
-
 
 window.addEventListener('load', function() {
   loadPage()
