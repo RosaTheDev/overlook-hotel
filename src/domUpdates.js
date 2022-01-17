@@ -19,12 +19,12 @@ const domUpdates = {
     welcomeMessage.innerHTML = `<h2>Welcome To The Overlook Hotel ${customer.name}</h2> 
   <h2>You Spent: $ ${totalCost}  So Far On Rooms!</h2>`
     customer.presentBookings.forEach(booking => {
-      bookingInfoPage.innerHTML += `<section>
-    <h2>Booking Information:</h2>
-    <h2>confirmation number: ${booking.id}</h2>
-    <h2>Booked for: ${booking.date}<h2>
-    <h2>Room Number: ${booking.roomNumber}</h2>
-    </section>`
+      bookingInfoPage.innerHTML += `<tr>
+    <td>Booking Information:</td>
+    <td>confirmation number: ${booking.id}</td>
+    <td>Booked for: ${booking.date}<td>
+    <td>Room Number: ${booking.roomNumber}</td>
+    </tr>`
     })
 
  
