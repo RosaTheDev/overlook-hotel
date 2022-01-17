@@ -6,7 +6,6 @@ class Booking {
     this.roomNumber = booking.roomNumber;
     this.roomServiceCharges = booking.roomServiceCharges;
   }
-
 }
 
 export default Booking;

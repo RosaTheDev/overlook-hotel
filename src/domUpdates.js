@@ -7,8 +7,6 @@ const dateControl = document.querySelector('input[type="date"]');
 const calendarSubmitBtn = document.querySelector('input[type="submit"]')
 
 const domUpdates = {
-
-
   welcomeUserMessage(customers, bookings, rooms, customer) {
     this.currentBookings
     customer.currentBookings(bookings)
@@ -26,8 +24,6 @@ const domUpdates = {
     <h2>Room Number: ${booking.roomNumber}</h2>
     </section>`
     })
-
- 
   },
 
   grabdate(event) {
