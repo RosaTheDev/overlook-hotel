@@ -58,5 +58,4 @@ calendarSubmitBtn.addEventListener('click', function(event) {
   domUpdates.grabdate(event)
 })
 
-
 export { customer, bookings, rooms}
