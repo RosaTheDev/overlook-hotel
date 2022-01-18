@@ -14,7 +14,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 //imports
 import { bookingsData, customersData, roomsData } from './apiCalls';
-import domUpdates  from './domUpdates';
+import domUpdates, { dropDownSelection }  from './domUpdates';
 import Customer from './classes/customer';
 import Booking from './classes/booking'
 import Room from './classes/room';
@@ -25,6 +25,7 @@ let customer
 let bookings;
 let rooms;
 let availableRooms;
+let filteredRoomType
 
 // on page load
 const loadPage = () => {
@@ -49,7 +50,7 @@ const loadPage = () => {
         return new Room(room);
       })
     
-      // console.log(rooms)
+      console.log(rooms[0].hasBidet)
       
       //change this to grab the user id and password
       domUpdates.welcomeUserMessage(customer, bookings, rooms)
@@ -64,8 +65,17 @@ const findAvailableRooms = (date) => {
   availableRooms = customer.availableRooms.map(room => {
     return new Room(room)
   });
-  domUpdates.avilRooms();
+  domUpdates.avilableRooms();
+}
+
+const filterByRooms = (dropDownSelection) => {
+  console.log(dropDownSelection)
+  customer.filterByRoomType(dropDownSelection)
+  // console.log('filtered', customer.filteredRoomTypes)
+  filteredRoomType = customer.filteredRoomTypes
+  console.log('f', filteredRoomType)
+  domUpdates.dropDownSelection(filteredRoomType)
 }
 
 // console.log(date)
-export { customer, bookings, rooms, availableRooms, loadPage, findAvailableRooms}
+export { customer, bookings, rooms, availableRooms, filteredRoomType, loadPage, findAvailableRooms, filterByRooms}

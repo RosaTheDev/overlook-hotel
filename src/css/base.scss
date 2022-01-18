@@ -26,9 +26,17 @@
   }
 
   .welcome-message {
+    background:rgba(180, 148, 232, 0.514);
     color: black;
-
   }
+  .welcome-user {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(0deg, #b866f253, #eef3f430);
+  color: black;
+}
   .calendar {
     background: linear-gradient(0deg, #b866f253, #eef3f430);
     display: flex;
@@ -37,7 +45,7 @@
 
   button {
     background-color: #8a41bd7e;
-    color: rgb(245, 240, 240);
+    color: rgb(255, 255, 255);
     padding: 14px 20px;
     margin:  8px 0;
     border: none;
@@ -49,7 +57,7 @@
   background: linear-gradient(0deg, #b5c6c961, #d3e2e331);
   display: flex;
   justify-content: center;
-}
+  }
 .userName-passwordSection {
    background: linear-gradient(0deg,  #b39bce53, #eef3f441);
     display: flex;
@@ -57,6 +65,21 @@
     align-content: center;
     flex-direction: column;
     align-items: center;
+  }
+
+  .dashboard {
+  background: linear-gradient(0deg,  #d9bef82f, #eef3f441);
+  
+  // border: 10px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.bookings-table {
+  background:rgba(180, 148, 232, 0.371);
+  font-size: x-large;
+  color:  rgb(2, 2, 2)
 }
 }
 
@@ -114,6 +137,33 @@
     flex-direction: column;
     align-items: center;
   }
+
+    .welcome-user {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(0deg, #95e7f04d, #8ae0f277);
+  color: black;
+}
+
+.dashboard {
+  background: linear-gradient(0deg,  #d9bef82f, #eef3f441);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.bookings-table {
+  background:rgba(253, 253, 253, 0.63);
+  font-size: x-large;
+  color:  rgb(9, 8, 8)
+}
+.checkin-board {
+  background:rgba(253, 253, 253, 0.63);
+  font-size: x-large;
+  color:  rgb(9, 8, 8)
+}
 } 
 
 label {
@@ -126,13 +176,13 @@ label {
   cursor: pointer;
 }
 
-.welcome-user {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
+// .welcome-user {
+//   margin-top: 10px;
+//   margin-bottom: 10px;
+//   display: flex;
+//   align-items: center;
+//   flex-direction: column;
+// }
 
 
 input[type=text], input[type=password] {
@@ -148,22 +198,7 @@ input[type=text], input[type=password] {
   cursor: pointer;
 }
 
-.main-dashboard {
-  // background-color: rgba(83, 167, 186, 0.125);
-}
-.dashboard {
-  background-color: rgba(130, 82, 198, 0.453);
-  margin-top: 15%;
-  // border: 10px solid red;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.bookings-table {
-  border: 3px solid  rgba(0, 238, 255, 0.481);
-  color:  rgb(226, 225, 225)
-}
+
 .hidden {
   display: none;
 }

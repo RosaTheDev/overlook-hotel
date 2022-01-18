@@ -27,25 +27,23 @@ class Customer {
         return this.unavailableRooms.push(booking);
       }
     })
-    // console.log(this.unavailableRooms)
   }
 
   findAvailableRooms(rooms) {
     let unavailableRooms = this.unavailableRooms.map(unavailableRoom => unavailableRoom.roomNumber);
     let available = rooms.reduce((acc, room) => {
-      if (room.number !== unavailableRooms.roomNumber) {
+      if (room.number !== unavailableRooms.roomNumber && !this.availableRooms.includes(room)) {
         acc.push(room)
       }
       return acc
     }, [])
     this.availableRooms = available
-    // console.log(available)
   }
 
   filterByRoomType(roomPrefrance) {
     
     this.availableRooms.filter(room => {
-      if (room.roomType === roomPrefrance) {
+      if (room.roomType === roomPrefrance && !this.filterByRoomType.includes(room)) {
         this.filteredRoomTypes.push(room)
       }
     })

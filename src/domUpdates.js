@@ -1,8 +1,9 @@
 import Customer from './classes/customer';
 import Room from './classes/room'
-import { availableRooms, findAvailableRooms, loadPage  } from  './scripts'
+import { availableRooms, filterByRooms, findAvailableRooms, loadPage, filteredRoomType  } from  './scripts'
 
 let date;
+let dropDownSelection;
 // Query Selectors
 const loginPage = document.querySelector('.login');
 const loginBtn = document.querySelector('.login-page-btn');
@@ -13,10 +14,10 @@ const calendarSubmitBtn = document.querySelector('#calendarCheckInBtn');
 const grabCalendar = document.querySelector('#calendar-start');
 const roomBooking = document.querySelector('.booking-a-room');
 const welcomeMessage = document.querySelector('.welcome-user');
-const displayAvRooms = document.querySelector('.checkin-board')
-const bookNow = document.querySelector('#book-now-btn');
-const dateControl = document.querySelector('input[type="date"]');
-
+const displayAvailableRooms = document.querySelector('.checkin-board');
+const grabDropDown = document.querySelector('#room-types');
+const dropDrownBtn = document.querySelector('#dropDownBtn');
+const filteredRooms = document.querySelector('.filteredRooms')
 const domUpdates = {
   hideLoginPage() {
     loginPage.classList.add('hidden');
@@ -33,6 +34,12 @@ const domUpdates = {
     roomBooking.classList.remove('hidden');
   },
 
+  hideCheckInBoard() {
+    displayAvailableRooms.classList.add('hidden')
+  },
+  showFilteredRooms() {
+    filteredRooms.classList.remove('hidden')
+  },
   // on page load log in 
 
   // 
@@ -58,31 +65,54 @@ const domUpdates = {
     })
   },
 
-  avilRooms() {
+  avilableRooms() {
     console.log(availableRooms)
+    displayAvailableRooms.innerHTML = ' '
     availableRooms.forEach(room => {
-      displayAvRooms.innerHTML += `
-    <section class="rooms-table">
-    <tr>
-    <td>rooms Information:</td>
-    <td>room number: ${room.number}</td>
-    <td>roomType: ${room.roomType}<td>
-    <td>bidet: ${room.bidet}</td>
-    <td>bedSize: ${room.bedSize}</td>
-    <td>numBeds: ${room.numBeds}</td>
-    <td>costPerNight: ${room.costPerNight}</td>
-    </tr>
-    </section>
-    `
+      displayAvailableRooms.innerHTML += `
+        <section class="rooms-table">
+          <tr>
+          <td>rooms Information:</td>
+          <td>room number: ${room.number}</td>
+          <td>roomType: ${room.roomType}<td>
+          <td>bedSize: ${room.bedSize}</td>
+          <td>numBeds: ${room.numBeds}</td>
+          <td>costPerNight: ${room.costPerNight}</td>
+          </tr>
+          </section>
+           `
     })
   },
+
+
   // filter by date && room type page
 
   grabdate(event) {
     event.preventDefault();
     date = grabCalendar.value
-    // console.log(grabCalendar.value)
-  } 
+  },
+
+  dropDownSelection() {
+    this.hideCheckInBoard()
+    this.showFilteredRooms()
+
+    console.log('domupdates', filteredRoomType)
+    filteredRooms.innerHTML = ' '
+    filteredRoomType.forEach(room => {
+      filteredRooms.innerHTML += `
+        <section class="rooms-table">
+          <tr>
+          <td>rooms Information:</td>
+          <td>room number: ${room.number}</td>
+          <td>roomType: ${room.roomType}<td>
+          <td>bedSize: ${room.bedSize}</td>
+          <td>numBeds: ${room.numBeds}</td>
+          <td>costPerNight: ${room.costPerNight}</td>
+          </tr>
+          </section>
+           `
+    })
+  }
 }
 
 // event listeners
@@ -110,6 +140,16 @@ calendarSubmitBtn.addEventListener('click', function (event) {
   findAvailableRooms(date);
 })
 
+grabDropDown.addEventListener('change', function(event) {
+  dropDownSelection = event.target.value
+})
 
-export {date};
+dropDrownBtn.addEventListener('click', function(event) {
+  domUpdates.grabdate(event)
+  findAvailableRooms(date);
+  filterByRooms(dropDownSelection)
+})
+
+
+export {date,  dropDownSelection};
 export default domUpdates;

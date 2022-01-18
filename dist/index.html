@@ -32,13 +32,6 @@
             </section>
       </nav>
 
-    <form>
-      <div class="calendar">
-        <label for="start">Start date:</label>
-        <input type="date" id="start" name="trip-start" min="2022-01-01" max="2022-12-31" required>
-        <input type="submit" id='checkInBtn'>
-      </div>
-    </form>
     
     <h1 class="welcome-user">Welcome, User You Spent $3,000 On Rooms So Far</h1>
     <div class="dashboard hidden">
@@ -62,10 +55,14 @@
               <option value="Suite">Suite</option>
               <option value="Single Room">Single Room</option>
             </select>
+            <input type="submit" id='dropDownBtn'>
         </div>
       </form>
-      <div class='checkin-board'>
+      <div class='checkin-board' id="">
         <!-- dom manipulation goes here -->
+      </div>
+      <div class="filteredRooms hidden">
+
       </div>
 
   </section>
