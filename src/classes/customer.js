@@ -27,7 +27,6 @@ class Customer {
         return this.unavailableRooms.push(booking);
       }
     })
-    // console.log(this.unavailableRooms)
   }
 
   findAvailableRooms(rooms) {
@@ -39,7 +38,6 @@ class Customer {
       return acc
     }, [])
     this.availableRooms = available
-    // console.log(available)
   }
 
   filterByRoomType(roomPrefrance) {
@@ -51,6 +49,7 @@ class Customer {
     })
     console.log(this.filteredRoomTypes)
   }
+
 
   calculateTotalCost(rooms) {
 

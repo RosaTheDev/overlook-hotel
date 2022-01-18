@@ -25,9 +25,10 @@ let customer
 let bookings;
 let rooms;
 let availableRooms;
+let filteredRoomType
 
 // on page load
-const loadPage = () => {
+const loadPage = (customerindex) => {
   Promise.all([customersData, bookingsData, roomsData])
     .then(data => {
       // customers
@@ -36,8 +37,9 @@ const loadPage = () => {
       })
 
       //random customers
+      // customer = new Customer(customers[customerindex - 1])
       customer = new Customer(customers[Math.floor(Math.random() * customers.length)])
-      // console.log(customer)
+      console.log(customerindex)
 
       //bookings 
       bookings = data[1].bookings.map(booking => {
@@ -49,7 +51,7 @@ const loadPage = () => {
         return new Room(room);
       })
     
-      // console.log(rooms)
+      console.log(rooms[0].hasBidet)
       
       //change this to grab the user id and password
       domUpdates.welcomeUserMessage(customer, bookings, rooms)
@@ -64,8 +66,19 @@ const findAvailableRooms = (date) => {
   availableRooms = customer.availableRooms.map(room => {
     return new Room(room)
   });
-  domUpdates.avilRooms();
+  domUpdates.avilableRooms();
+}
+
+const filterByRooms = (dropDownSelection) => {
+  console.log(dropDownSelection)
+  customer.filterByRoomType(dropDownSelection)
+  console.log(customer)
+  customer.filterByRoomType(dropDownSelection)
+  // console.log('filtered', customer.filteredRoomTypes)
+  filteredRoomType = customer.filteredRoomTypes
+  console.log('f', filteredRoomType)
+  domUpdates.dropDownSelection(filteredRoomType)
 }
 
 // console.log(date)
-export { customer, bookings, rooms, availableRooms, loadPage, findAvailableRooms}
+export { customer, customers, bookings, rooms, availableRooms, filteredRoomType, loadPage, findAvailableRooms, filterByRooms}
