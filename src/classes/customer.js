@@ -50,6 +50,7 @@ class Customer {
     console.log(this.filteredRoomTypes)
   }
 
+
   calculateTotalCost(rooms) {
 
     let totalCostArray = this.presentBookings.map(booking => {

@@ -54,11 +54,4 @@ describe('Customer', () => {
     expect(customer.filteredRoomTypes[0]).to.equal(roomData[0]);
   });
 
-  it('Should return an apology if no rooms are available', () => {
-    customer.bookingByDate('2022/01/21', bookingData)
-    customer.findAvailableRooms(rooms)
-    console.log('no vacancy', customer.unavailableRooms)
-    console.log('vacancy', customer.availableRooms)
-    expect(customer.unavailableRooms[0]).to.equal(bookingData[9]);
-  })
 });
