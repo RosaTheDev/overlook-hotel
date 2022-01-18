@@ -1,17 +1,15 @@
 class Customer {
   constructor(customer) {
-    this.customers = customer;
     this.id = customer.id;
     this.name = customer.name;
     this.presentBookings = [];
-    this.closedBookings = [];
-    this.openRooms = [];
-    this.openBooking = [];
+    this.unavailableRooms = [];
+    this.availableRooms = [];
+    this.filteredRoomTypes = [];
     this.apology = `I'm so sorry ${this.name}, please adjust your dates`;
   }
 
   currentBookings(bookings) {
-    
     bookings.filter(booking => {
       if (booking.userID === this.id) {
         return this.presentBookings.push(booking);
@@ -23,43 +21,39 @@ class Customer {
     }
   }
 
-  checkClosedRooms(bookings) {
-    return bookings.reduce((acc, booking) => {
-      this.customers.forEach(customer => {
-        if (customer.id === booking.userID && !acc.includes(booking)) {
-          acc.push(booking)
-        }
-      })
-      this.closedBookings = acc
-      return acc 
-    }, [])
-
-  }
-
-  checkOpenRooms(bookings) {
-    return bookings.reduce((acc, booking) => {
-      this.closedBookings.forEach(closedRoom => {
-        if (closedRoom.id !== booking.id && !acc.includes(booking)) {
-          acc.push(booking)
-        }
-      })
-      this.openRooms = acc
-      return acc
-    }, [])
-  }
-
-  checkOpenRoomsDates(date) {
-    this.openRooms.filter(openRoom => {
-      if (openRoom.date === date) {
-        this.openBooking.push(openRoom)
+  bookingByDate(date, bookings) {
+    bookings.filter(booking => {
+      if (booking.date === date) {
+        return this.unavailableRooms.push(booking);
       }
     })
-    return this.openBooking
-
+    // console.log(this.unavailableRooms)
   }
 
+  findAvailableRooms(rooms) {
+    let unavailableRooms = this.unavailableRooms.map(unavailableRoom => unavailableRoom.roomNumber);
+    let available = rooms.reduce((acc, room) => {
+      if (room.number !== unavailableRooms.roomNumber) {
+        acc.push(room)
+      }
+      return acc
+    }, [])
+    this.availableRooms = available
+    // console.log(available)
+  }
+
+  filterByRoomType(roomPrefrance) {
+    
+    this.availableRooms.filter(room => {
+      if (room.roomType === roomPrefrance) {
+        this.filteredRoomTypes.push(room)
+      }
+    })
+    console.log(this.filteredRoomTypes)
+  }
 
   calculateTotalCost(rooms) {
+
     let totalCostArray = this.presentBookings.map(booking => {
       let foundRooom = rooms.filter(room => {
         if (room.number === booking.roomNumber) {

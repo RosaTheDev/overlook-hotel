@@ -4,6 +4,7 @@ import bookingData from './test-data/booking-data'
 import roomData from './test-data/room-data'
 import Customer from '../src/classes/customer';
 import bookings from './test-data/booking-data';
+import rooms from './test-data/room-data';
 
 
 describe('Customer', () => {
@@ -38,26 +39,23 @@ describe('Customer', () => {
   it('Should return a total cost for the rooms', () => {
     customer.currentBookings(bookingData);
     expect(customer.calculateTotalCost(roomData)).to.equal(856.04);
-  })
-
-  it('Should check the closed rooms', () => {
-    customer = new Customer(customerData)
-    let closed = customer.checkClosedRooms(bookingData);
-    expect(closed).to.equal(customer.closedBookings);
   });
 
-  it('Should check the open rooms', () => {
-    customer = new Customer(customerData)
-    let open = customer.checkOpenRooms(bookingData);
-    expect(open).to.equal(customer.openRooms);
+  it('Should return a list of unavilable rooms for the booking date', () => {
+    customer.bookingByDate('2022/01/15', bookingData)
+    expect(customer.unavailableRooms[0]).to.equal(bookingData[9]);
   });
 
-  it('Should check the open rooms by the date', () => {
-    customer = new Customer(customerData)
-    customer.checkClosedRooms(bookingData)
-    customer.checkOpenRooms(bookingData)
-    let open = customer.checkOpenRoomsDates('2022/01/15');
-    expect(open).to.equal(customer.openBooking);
+  it('Should return available Rooms', () => {
+    customer.bookingByDate('2022/01/15', bookingData);
+    customer.findAvailableRooms(roomData);
+    expect(customer.availableRooms[0]).to.equal(roomData[0]);
   });
-  
+
+  it('Should filter by roomType', () => {
+    customer.bookingByDate('2022/01/15', bookingData);
+    customer.findAvailableRooms(roomData);
+    customer.filterByRoomType('residential suite');
+    expect(customer.filteredRoomTypes[0]).to.equal(roomData[0]);
+  });
 });

@@ -30,32 +30,32 @@ const loadPage = () => {
     .then(data => {
       // customers
       customers  = data[0].customers.map(customer => {
-        return new Customer(customer)
+        return new Customer(customer);
       })
     
       //random customerss
-      customer = new Customer(customers[Math.floor(Math.random() * customers.length)])
+      customer = new Customer(customers[Math.floor(Math.random() * customers.length)]);
 
       //bookings 
       bookings = data[1].bookings.map(booking => {
-        return new Booking(booking)
+        return new Booking(booking);
       })
 
       //rooms 
       rooms = data[2].rooms.map(room => {
-        return new Room(room)
+        return new Room(room);
       })
     
-      domUpdates.welcomeUserMessage(customers, bookings, rooms, customer)
+      domUpdates.welcomeUserMessage(customers, bookings, rooms, customer);
     })
 }
 
 window.addEventListener('load', function() {
-  loadPage()
+  loadPage();
 })
 
 calendarSubmitBtn.addEventListener('click', function(event) {
-  domUpdates.grabdate(event)
+  domUpdates.grabdate(event);
 })
 
 export { customer, bookings, rooms}
