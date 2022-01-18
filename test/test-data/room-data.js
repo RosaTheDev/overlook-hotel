@@ -1,12 +1,5 @@
 const rooms = [
-  {
-    "number": 1,
-    "roomType": "residential suite",
-    "bidet": true,
-    "bedSize": "queen",
-    "numBeds": 1,
-    "costPerNight": 358.4
-  },
+ 
   {
     "number": 2,
     "roomType": "suite",

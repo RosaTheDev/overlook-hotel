@@ -1,10 +1,10 @@
-import { expect } from 'chai';
-import customerData from './test-data/customer-data';
+import { expect } from 'chai'; import customerData from './test-data/customer-data';
 import bookingData from './test-data/booking-data'
 import roomData from './test-data/room-data'
 import Customer from '../src/classes/customer';
 import bookings from './test-data/booking-data';
 import rooms from './test-data/room-data';
+// import { roomsData } from '../src/apiCalls';
 
 
 describe('Customer', () => {
@@ -28,22 +28,17 @@ describe('Customer', () => {
 
   it('Should contain all bookings', () => {
     customer.currentBookings(bookingData);
-    expect(customer.presentBookings.length).to.equal(2);
-  });
-
-  it('Should return an apology if there is no booking', () => {
-    customer = new Customer(customerData[7]);
-    expect(customer.currentBookings(bookingData)).to.equal(customer.apology);
+    expect(customer.presentBookings.length).to.equal(1);
   });
 
   it('Should return a total cost for the rooms', () => {
     customer.currentBookings(bookingData);
-    expect(customer.calculateTotalCost(roomData)).to.equal(856.04);
+    expect(customer.calculateTotalCost(roomData)).to.equal(497.64);
   });
 
   it('Should return a list of unavilable rooms for the booking date', () => {
     customer.bookingByDate('2022/01/15', bookingData)
-    expect(customer.unavailableRooms[0]).to.equal(bookingData[9]);
+    expect(customer.unavailableRooms[1]).to.equal(bookingData[9]);
   });
 
   it('Should return available Rooms', () => {
@@ -55,7 +50,15 @@ describe('Customer', () => {
   it('Should filter by roomType', () => {
     customer.bookingByDate('2022/01/15', bookingData);
     customer.findAvailableRooms(roomData);
-    customer.filterByRoomType('residential suite');
+    customer.filterByRoomType('suite');
     expect(customer.filteredRoomTypes[0]).to.equal(roomData[0]);
   });
+
+  it('Should return an apology if no rooms are available', () => {
+    customer.bookingByDate('2022/01/21', bookingData)
+    customer.findAvailableRooms(rooms)
+    console.log('no vacancy', customer.unavailableRooms)
+    console.log('vacancy', customer.availableRooms)
+    expect(customer.unavailableRooms[0]).to.equal(bookingData[9]);
+  })
 });
