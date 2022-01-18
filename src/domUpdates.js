@@ -21,6 +21,7 @@ const dropDrownBtn = document.querySelector('#dropDownBtn');
 const filteredRooms = document.querySelector('.filteredRooms');
 const username = document.querySelector('#username');
 const password = document.querySelector('#password');
+
 let bookMe;
 let roomNumb;
 
@@ -84,9 +85,9 @@ const domUpdates = {
       // console.log('hello')
       availableRooms.forEach(room => {
         displayAvailableRooms.innerHTML += `
-        <section class="rooms">
+        <section class="rooms" id=${room.number}>
         <p>rooms Information:</p>
-        <p id="roomNumber">room number: ${room.number}</p>
+        <p class="roomNumber"id=${room.number}>room number: ${room.number}</p>
         <p>roomType: ${room.roomType}</p>
         <p>bedSize: ${room.bedSize}</p>
         <p>numBeds: ${room.numBeds}</p>
@@ -100,7 +101,8 @@ const domUpdates = {
       return displayAvailableRooms.innerHTML = '<h1>We fiercely apologize. There is no Vacancy, please try again</h1>'
     }
     bookMe = document.querySelectorAll('.bookMe')
-    roomNumb = document.getElementById("roomNumber").innerHTML
+    roomNumb = document.querySelector(".roomNumber")
+    // console.log('bookMe', roomNumb)
     this.bookARoom(bookMe, roomNumb)
   },
 
@@ -113,11 +115,11 @@ const domUpdates = {
   },
 
   dropDownSelection() {
+    filteredRooms.innerHTML = ' '
     this.hideCheckInBoard()
     this.showFilteredRooms()
 
     console.log('domupdates', filteredRoomType)
-    filteredRooms.innerHTML = ' '
     if (filteredRoomType.length > 0) {
       console.log('hello')
       filteredRoomType.forEach(room => {
@@ -141,15 +143,19 @@ const domUpdates = {
     this.bookARoom(bookMe)
   },
 
-  bookARoom(bookMe, roomNumb) {
-    console.log(roomNumb)
+  bookARoom(bookMe) {
+    // console.log(roomNumb)
     bookMe.forEach(book => {
       book.addEventListener('click', function(event) {
+        console.log(event.target.parentNode.id)
+        roomNumb = Number(event.target.parentNode.id);
+        console.log('dom updattes', roomNumb)
         bookRoom(date, roomNumb)
       })
     })
   }
 
+// end //
 }
 
 // event listeners
@@ -183,6 +189,7 @@ grabDropDown.addEventListener('change', function(event) {
 })
 
 dropDrownBtn.addEventListener('click', function(event) {
+  filteredRooms.innerHTML = ''
   domUpdates.grabdate(event)
   findAvailableRooms(date);
   filterByRooms(dropDownSelection)

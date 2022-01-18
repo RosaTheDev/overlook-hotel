@@ -68,10 +68,13 @@ const findAvailableRooms = (date) => {
 
 const filterByRooms = (dropDownSelection) => {
   console.log(dropDownSelection)
-  customer.filterByRoomType(dropDownSelection)
   console.log(customer)
+
+  if (customer.filteredRoomTypes.length > 0) {
+    customer.filteredRoomTypes = [];
+  }
+
   customer.filterByRoomType(dropDownSelection)
-  // console.log('filtered', customer.filteredRoomTypes)
   filteredRoomType = customer.filteredRoomTypes
   console.log('f', filteredRoomType)
   domUpdates.dropDownSelection(filteredRoomType)
@@ -79,16 +82,13 @@ const filterByRooms = (dropDownSelection) => {
 
 const bookRoom = (currentDate, roomNumb) => {
   let slashDate = currentDate.split('-').join('/');
-  console.log(availableRooms)
-  console.log(roomNumb.split(' ')[2])
-  let roomNum = roomNumb.split(' ')[2]
-
+  console.log('scripts', roomNumb)
   let currentRoom = {
     userID: customer.id,
     date: slashDate,
-    roomNumber: Number(roomNum)
+    roomNumber: roomNumb
   }
-  // console.log(currentRoom)
+  console.log(currentRoom)
   postBooking(currentRoom)
 }
 
