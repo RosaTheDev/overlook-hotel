@@ -1,10 +1,29 @@
 $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 html {
-    --bg-color: #ffffff;
-    --color: #000000
+    --bg-color: #ffffff7e;
+    --color: #484848
 }
 
 html[dark] {
-    --bg-color: #000000;
-    --color: #ffffff;
+    --bg-color: #484848;
+    --color: #ffffff8c;
 }
+
+
+// $header-background: #0d1c10;
+// $button-text: #fafaf7;
+// $button-hover: #1c3b21;
+// $button-border: #d1b38e;
+// // $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)
+
+// @mixin flex-row {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;    
+// }
+
+// @mixin flex-center {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }

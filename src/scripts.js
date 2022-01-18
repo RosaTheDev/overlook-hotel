@@ -10,10 +10,11 @@ import './images/turing-logo.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
+
+
 //imports
 import { bookingsData, customersData, roomsData } from './apiCalls';
-import { calendarSubmitBtn } from './domUpdates';
-import domUpdates from './domUpdates';
+import domUpdates  from './domUpdates';
 import Customer from './classes/customer';
 import Booking from './classes/booking'
 import Room from './classes/room';
@@ -23,8 +24,9 @@ let customers;
 let customer
 let bookings;
 let rooms;
+let availableRooms;
 
-
+// on page load
 const loadPage = () => {
   Promise.all([customersData, bookingsData, roomsData])
     .then(data => {
@@ -32,9 +34,10 @@ const loadPage = () => {
       customers  = data[0].customers.map(customer => {
         return new Customer(customer);
       })
-    
-      //random customerss
-      customer = new Customer(customers[Math.floor(Math.random() * customers.length)]);
+
+      //random customers
+      customer = new Customer(customers[Math.floor(Math.random() * customers.length)])
+      // console.log(customer)
 
       //bookings 
       bookings = data[1].bookings.map(booking => {
@@ -46,16 +49,23 @@ const loadPage = () => {
         return new Room(room);
       })
     
-      domUpdates.welcomeUserMessage(customers, bookings, rooms, customer);
+      // console.log(rooms)
+      
+      //change this to grab the user id and password
+      domUpdates.welcomeUserMessage(customer, bookings, rooms)
     })
 }
 
-window.addEventListener('load', function() {
-  loadPage();
-})
+const findAvailableRooms = (date) => {
+  let slashDate = date.split('-').join('/');
+  console.log(slashDate)
+  customer.bookingByDate(slashDate, bookings)
+  customer.findAvailableRooms(rooms)
+  availableRooms = customer.availableRooms.map(room => {
+    return new Room(room)
+  });
+  domUpdates.avilRooms();
+}
 
-calendarSubmitBtn.addEventListener('click', function(event) {
-  domUpdates.grabdate(event);
-})
-
-export { customer, bookings, rooms}
+// console.log(date)
+export { customer, bookings, rooms, availableRooms, loadPage, findAvailableRooms}

@@ -3,24 +3,76 @@
 
 @media (prefers-color-scheme: dark) {
   body {
-    background: #000000;
-    color: #ffffff;
+    background: linear-gradient(0deg, rgba(254, 254, 254, 0.118), rgba(57, 56, 56, 0.071)),url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #F5D7#494249;
+    margin: 0px;
   }
 
   nav {
-  background: #FFFFFF;
+  background: linear-gradient(0deg, rgba(254, 254, 254, 0.118), rgba(57, 56, 56, 0.071));
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  align-items: center;
+  }
   
+  h2 {
+    margin: 0;
   }
 
   .welcome-message {
     color: black;
 
   }
+  .calendar {
+    background: linear-gradient(0deg, #b866f253, #eef3f430);
+    display: flex;
+    justify-content: center;
+  }
+
+  button {
+    background-color: #8a41bd7e;
+    color: rgb(245, 240, 240);
+    padding: 14px 20px;
+    margin:  8px 0;
+    border: none;
+    cursor: pointer;
+  }
+
+  .login-message {
+  margin: 0;
+  background: linear-gradient(0deg, #b5c6c961, #d3e2e331);
+  display: flex;
+  justify-content: center;
+}
+.userName-passwordSection {
+   background: linear-gradient(0deg,  #b39bce53, #eef3f441);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+}
 }
 
 @media (prefers-color-scheme: light) {
+
+  body {
+    background: linear-gradient(0deg, rgba(254, 254, 254, 0.029), rgba(57, 56, 56, 0)), url('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #F5D7#494249;
+    margin: 0px;
+  }
+
   nav {
-    background: #000000;
+    background:linear-gradient(0deg, rgba(254, 254, 254, 0.297), #049aa59f);
     display: flex;
     align-content: stretch;
     flex-wrap: nowrap;
@@ -28,69 +80,91 @@
   }
   
   .welcome-message {
-    color: #ffffff;
+    color: #000000f1;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
-}
 
-
-.calendar {
+  .calendar {
+  background: linear-gradient(0deg, #049aa553, #eef3f490);
   display: flex;
   justify-content: center;
-}
+  }
 
-#checkInBtn {
-  cursor: pointer;
-}
-.welcome-user {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  button {
+    background-color: #087b83c9;
+    color: rgb(10, 10, 10);
+    padding: 14px 20px;
+    margin:  8px 0;
+    border: none;
+    cursor: pointer;
+  }
+
+  .login-message {
+    margin: 0;
+    background: linear-gradient(0deg, #9bcbce3a, #eef3f44c);
     display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-.dashboard  {
+    justify-content: center;
+  }
+  .userName-passwordSection {
+    background: linear-gradient(0deg, #94b1b646, #9bcbce45);
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    align-content: space-around;
-    justify-content: space-evenly;
-}
-
-
-.login {
-  // border: 4px solid blue
-}
-.login-message {
-  display: flex;
-  justify-content: center;
-}
-.userName-passwordSection {
-  display: flex;
     justify-content: center;
     align-content: center;
     flex-direction: column;
     align-items: center;
+  }
+} 
+
+label {
+  font-size: larger;
+  color: #000000
 }
+
+
+#checkInBtn {
+  cursor: pointer;
+}
+
+.welcome-user {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+
 input[type=text], input[type=password] {
-  width: 40%;
+  width: 10%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-button {
-  background-color: #b00f0f;
-  color: white;
-  padding: 14px 20px;
-  margin:  8px 0;
-  border: none;
-  cursor: pointer;
-}
 
 #room-types:hover {
   cursor: pointer;
 }
+
+.main-dashboard {
+  // background-color: rgba(83, 167, 186, 0.125);
+}
+.dashboard {
+  background-color: rgba(130, 82, 198, 0.453);
+  margin-top: 15%;
+  // border: 10px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.bookings-table {
+  border: 3px solid  rgba(0, 238, 255, 0.481);
+  color:  rgb(226, 225, 225)
+}
 .hidden {
   display: none;
 }
+
