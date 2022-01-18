@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
@@ -13,8 +14,9 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 
 //imports
-import { bookingsData, customersData, roomsData } from './apiCalls';
+import { fetchData, postBooking } from './apiCalls';
 import domUpdates  from './domUpdates';
+import { customerIndex } from './domUpdates';
 import Customer from './classes/customer';
 import Booking from './classes/booking'
 import Room from './classes/room';
@@ -28,36 +30,31 @@ let availableRooms;
 let filteredRoomType
 
 // on page load
-const loadPage = (customerindex) => {
-  Promise.all([customersData, bookingsData, roomsData])
+const loadPage = (customerIndex) => {
+  Promise.all([fetchData(`customers/${customerIndex}`), fetchData('bookings'), fetchData('rooms')])
     .then(data => {
-      // customers
-      customers  = data[0].customers.map(customer => {
-        return new Customer(customer);
-      })
-
-      //random customers
-      // customer = new Customer(customers[customerindex - 1])
-      customer = new Customer(customers[Math.floor(Math.random() * customers.length)])
-      console.log(customerindex)
-
+    // customers
+      customer  = data.map(customer => {
+        return new Customer(customer)
+      }).find(customer => customer.id === Number(customerIndex))
+      console.log('working', customer)
+      console.log(data)
+      
       //bookings 
       bookings = data[1].bookings.map(booking => {
         return new Booking(booking);
       })
-
+      
       //rooms 
       rooms = data[2].rooms.map(room => {
         return new Room(room);
       })
-    
-      console.log(rooms[0].hasBidet)
       
       //change this to grab the user id and password
       domUpdates.welcomeUserMessage(customer, bookings, rooms)
     })
 }
-
+  
 const findAvailableRooms = (date) => {
   let slashDate = date.split('-').join('/');
   console.log(slashDate)
@@ -80,5 +77,20 @@ const filterByRooms = (dropDownSelection) => {
   domUpdates.dropDownSelection(filteredRoomType)
 }
 
+const bookRoom = (currentDate, roomNumb) => {
+  let slashDate = currentDate.split('-').join('/');
+  console.log(availableRooms)
+  console.log(roomNumb.split(' ')[2])
+  let roomNum = roomNumb.split(' ')[2]
+
+  let currentRoom = {
+    userID: customer.id,
+    date: slashDate,
+    roomNumber: Number(roomNum)
+  }
+  // console.log(currentRoom)
+  postBooking(currentRoom)
+}
+
 // console.log(date)
-export { customer, customers, bookings, rooms, availableRooms, filteredRoomType, loadPage, findAvailableRooms, filterByRooms}
+export { customer, customers, bookings, rooms, availableRooms, filteredRoomType, loadPage, findAvailableRooms, filterByRooms, bookRoom}

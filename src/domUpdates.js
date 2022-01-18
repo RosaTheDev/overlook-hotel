@@ -1,9 +1,9 @@
 
-import { availableRooms, filterByRooms, findAvailableRooms, loadPage, filteredRoomType, customers } from  './scripts'
+import { availableRooms, filterByRooms, findAvailableRooms, loadPage, filteredRoomType, customers, bookRoom } from  './scripts'
 
 let date;
 let dropDownSelection;
-let customerindex;
+let customerIndex;
 
 // Query Selectors
 const loginPage = document.querySelector('.login');
@@ -22,7 +22,7 @@ const filteredRooms = document.querySelector('.filteredRooms');
 const username = document.querySelector('#username');
 const password = document.querySelector('#password');
 let bookMe;
-
+let roomNumb;
 
 
 const domUpdates = {
@@ -86,7 +86,7 @@ const domUpdates = {
         displayAvailableRooms.innerHTML += `
         <section class="rooms">
         <p>rooms Information:</p>
-        <p>room number: ${room.number}</p>
+        <p id="roomNumber">room number: ${room.number}</p>
         <p>roomType: ${room.roomType}</p>
         <p>bedSize: ${room.bedSize}</p>
         <p>numBeds: ${room.numBeds}</p>
@@ -100,7 +100,8 @@ const domUpdates = {
       return displayAvailableRooms.innerHTML = '<h1>We fiercely apologize. There is no Vacancy, please try again</h1>'
     }
     bookMe = document.querySelectorAll('.bookMe')
-    this.bookARoom(bookMe)
+    roomNumb = document.getElementById("roomNumber").innerHTML
+    this.bookARoom(bookMe, roomNumb)
   },
 
 
@@ -140,10 +141,11 @@ const domUpdates = {
     this.bookARoom(bookMe)
   },
 
-  bookARoom(bookMe) {
+  bookARoom(bookMe, roomNumb) {
+    console.log(roomNumb)
     bookMe.forEach(book => {
       book.addEventListener('click', function(event) {
-        console.log(event.target.parentNode)
+        bookRoom(date, roomNumb)
       })
     })
   }
@@ -151,18 +153,14 @@ const domUpdates = {
 }
 
 // event listeners
-window.addEventListener('load', function () {
-  loadPage(customerindex);
-})
 
 loginBtn.addEventListener('click', function(event)  {
   console.log(event)
-  customerindex = username.value.split('customer')[1]
-  console.log('yooo', customerindex)
-  // console.log(password.value)
+  customerIndex = username.value.split('customer')[1]
+  console.log('yooo', customerIndex)
   domUpdates.hideLoginPage();
   domUpdates.showUserDashboard();
-
+  loadPage(customerIndex);
 })
 
 BookRoomBtn.addEventListener('click', function(event) {
@@ -176,6 +174,8 @@ BookRoomBtn.addEventListener('click', function(event) {
 calendarSubmitBtn.addEventListener('click', function (event) {
   domUpdates.grabdate(event)
   findAvailableRooms(date);
+  // this.bookARoom(bookMe)
+  // bookRoom(date)
 })
 
 grabDropDown.addEventListener('change', function(event) {
@@ -189,5 +189,5 @@ dropDrownBtn.addEventListener('click', function(event) {
 })
 
 
-export {date,  dropDownSelection};
+export {date,  dropDownSelection, customerIndex};
 export default domUpdates;
