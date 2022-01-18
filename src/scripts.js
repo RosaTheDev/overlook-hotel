@@ -71,6 +71,8 @@ const findAvailableRooms = (date) => {
 const filterByRooms = (dropDownSelection) => {
   console.log(dropDownSelection)
   customer.filterByRoomType(dropDownSelection)
+  console.log(customer)
+  customer.filterByRoomType(dropDownSelection)
   // console.log('filtered', customer.filteredRoomTypes)
   filteredRoomType = customer.filteredRoomTypes
   console.log('f', filteredRoomType)

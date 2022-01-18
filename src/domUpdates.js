@@ -53,13 +53,11 @@ const domUpdates = {
 
     customer.presentBookings.forEach(booking => {
       bookingInfoPage.innerHTML += `
-    <section class="bookings-table">
-    <tr>
-    <td>Booking Information:</td>
-    <td>confirmation number: ${booking.id}</td>
-    <td>Booked for: ${booking.date}<td>
-    <td>Room Number: ${booking.roomNumber}</td>
-    </tr>
+    <section class="bookings">
+    <p>Booking Information:</p>
+    <p>confirmation number: ${booking.id}</p>
+    <p>Booked for: ${booking.date}<p>
+    <p>Room Number: ${booking.roomNumber}</p>
     </section>
     `
     })
@@ -70,15 +68,13 @@ const domUpdates = {
     displayAvailableRooms.innerHTML = ' '
     availableRooms.forEach(room => {
       displayAvailableRooms.innerHTML += `
-        <section class="rooms-table">
-          <tr>
-          <td>rooms Information:</td>
-          <td>room number: ${room.number}</td>
-          <td>roomType: ${room.roomType}<td>
-          <td>bedSize: ${room.bedSize}</td>
-          <td>numBeds: ${room.numBeds}</td>
-          <td>costPerNight: ${room.costPerNight}</td>
-          </tr>
+        <section class="rooms">
+          <p>rooms Information:</p>
+          <p>room number: ${room.number}</p>
+          <p>roomType: ${room.roomType}</p>
+          <p>bedSize: ${room.bedSize}</p>
+          <p>numBeds: ${room.numBeds}</p>
+          <p>costPerNight: ${room.costPerNight}</p>
           </section>
            `
     })
@@ -100,15 +96,13 @@ const domUpdates = {
     filteredRooms.innerHTML = ' '
     filteredRoomType.forEach(room => {
       filteredRooms.innerHTML += `
-        <section class="rooms-table">
-          <tr>
-          <td>rooms Information:</td>
-          <td>room number: ${room.number}</td>
-          <td>roomType: ${room.roomType}<td>
-          <td>bedSize: ${room.bedSize}</td>
-          <td>numBeds: ${room.numBeds}</td>
-          <td>costPerNight: ${room.costPerNight}</td>
-          </tr>
+        <section class="filteredRooms">
+          <p>rooms Information:</p>
+          <p>room number: ${room.number}</p>
+          <p>roomType: ${room.roomType}<p>
+          <p>bedSize: ${room.bedSize}</p>
+          <p>numBeds: ${room.numBeds}</p>
+          <p>costPerNight: ${room.costPerNight}</p>
           </section>
            `
     })

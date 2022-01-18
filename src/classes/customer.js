@@ -32,7 +32,7 @@ class Customer {
   findAvailableRooms(rooms) {
     let unavailableRooms = this.unavailableRooms.map(unavailableRoom => unavailableRoom.roomNumber);
     let available = rooms.reduce((acc, room) => {
-      if (room.number !== unavailableRooms.roomNumber && !this.availableRooms.includes(room)) {
+      if (room.number !== unavailableRooms.roomNumber) {
         acc.push(room)
       }
       return acc
@@ -43,7 +43,7 @@ class Customer {
   filterByRoomType(roomPrefrance) {
     
     this.availableRooms.filter(room => {
-      if (room.roomType === roomPrefrance && !this.filterByRoomType.includes(room)) {
+      if (room.roomType === roomPrefrance) {
         this.filteredRoomTypes.push(room)
       }
     })
