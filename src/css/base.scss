@@ -81,6 +81,30 @@
   font-size: x-large;
   color:  rgb(2, 2, 2)
 }
+
+.dashboard, .checkin-board, .filteredRooms{
+  background: linear-gradient(0deg,  #d9bef82f, #eef3f441);
+  display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2em;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+.bookings, .rooms, .filteredRoomsdiv {
+  background: rgba(232, 165, 242, 0.514);
+   border: 2px solid rgb(211, 97, 237);
+   border-radius: 0.5em;
+	font-size: 1em;
+ 
+  padding: 1%;
+}
+.bookings-table {
+  background:rgba(253, 253, 253, 0.63);
+  font-size: x-large;
+  color:  rgb(9, 8, 8)
+}
 }
 
 @media (prefers-color-scheme: light) {
