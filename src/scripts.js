@@ -32,7 +32,7 @@ const loadPage = () => {
     .then(data => {
       // customers
       customers  = data[0].customers.map(customer => {
-        return new Customer(customer)
+        return new Customer(customer);
       })
 
       //random customers
@@ -41,14 +41,14 @@ const loadPage = () => {
 
       //bookings 
       bookings = data[1].bookings.map(booking => {
-        return new Booking(booking)
+        return new Booking(booking);
       })
-      // console.log(bookings)
 
       //rooms 
       rooms = data[2].rooms.map(room => {
-        return new Room(room)
+        return new Room(room);
       })
+    
       // console.log(rooms)
       
       //change this to grab the user id and password

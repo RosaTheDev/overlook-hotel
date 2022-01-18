@@ -47,16 +47,15 @@ describe('Customer', () => {
   });
 
   it('Should return available Rooms', () => {
-    customer.bookingByDate('2022/01/15', bookingData)
-    customer.findAvailableRooms(roomData)
-    expect(customer.availableRooms[0]).to.equal(roomData[0])
-  })
+    customer.bookingByDate('2022/01/15', bookingData);
+    customer.findAvailableRooms(roomData);
+    expect(customer.availableRooms[0]).to.equal(roomData[0]);
+  });
 
   it('Should filter by roomType', () => {
-    customer.bookingByDate('2022/01/15', bookingData)
-    customer.findAvailableRooms(roomData)
-    customer.filterByRoomType('residential suite')
-    expect(customer.filteredRoomTypes[0]).to.equal(roomData[0])
-  })
-
+    customer.bookingByDate('2022/01/15', bookingData);
+    customer.findAvailableRooms(roomData);
+    customer.filterByRoomType('residential suite');
+    expect(customer.filteredRoomTypes[0]).to.equal(roomData[0]);
+  });
 });

@@ -39,7 +39,6 @@ const domUpdates = {
 
   // works
   welcomeUserMessage(customer, bookings, rooms) {
-
     customer.currentBookings(bookings)
     const totalCost = customer.calculateTotalCost(rooms)
     welcomeMessage.innerHTML = `<h2>Welcome To The Overlook Hotel ${customer.name}</h2> 
