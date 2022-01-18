@@ -41,13 +41,13 @@ class Customer {
   }
 
   filterByRoomType(roomPrefrance) {
+    console.log('customer class', this.filteredRoomTypes)
     
     this.availableRooms.filter(room => {
       if (room.roomType === roomPrefrance) {
         this.filteredRoomTypes.push(room)
       }
     })
-    console.log(this.filteredRoomTypes)
   }
 
 

@@ -1,17 +1,11 @@
 
-let fetchData = (api) => 
-  fetch(`http://localhost:3001/api/v1/${api}`)
+let fetchData = (api) => {
+  return fetch(`http://localhost:3001/api/v1/${api}`)
     .then(response => response.json())
-
-let customersData = fetchData('customers')
-
-let bookingsData = fetchData('bookings')
-
-let roomsData = fetchData('rooms')
-
+}
+// (`http://localhost:3001/api/v1/customers${customerIndex}`
 let postBooking = (data) => {
-
-  return fetch(`http://localhost:3001/api/v1/customers`, {
+  return fetch(`http://localhost:3001/api/v1/bookings`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -27,4 +21,4 @@ let postBooking = (data) => {
     })
 }
 
-export {customersData, roomsData, bookingsData, postBooking}
+export {fetchData, postBooking}
