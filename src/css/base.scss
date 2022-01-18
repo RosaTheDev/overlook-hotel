@@ -147,7 +147,7 @@
   color: black;
 }
 
-.dashboard, .checkin-board {
+.dashboard, .checkin-board, .filteredRooms{
   background: linear-gradient(0deg,  #d9bef82f, #eef3f441);
   display: flex;
     flex-wrap: wrap;
@@ -157,13 +157,12 @@
     gap: 2em;
     grid-template-columns: 25% 25% 25% 25%;
 }
-.bookings, .rooms {
+.bookings, .rooms, .filteredRoomsdiv {
   background: rgba(170, 238, 232, 0.514);
    border: 2px solid rgb(84, 190, 231);
    border-radius: 0.5em;
 	font-size: 1em;
-  // background-color: $cardColor;
-  // box-shadow: $boxShadow;
+ 
   padding: 1%;
 }
 .bookings-table {
@@ -171,11 +170,6 @@
   font-size: x-large;
   color:  rgb(9, 8, 8)
 }
-// .checkin-board {
-//   background:rgba(253, 253, 253, 0.63);
-//   font-size: x-large;
-//   color:  rgb(9, 8, 8)
-// }
 } 
 
 label {
@@ -187,15 +181,6 @@ label {
 #checkInBtn {
   cursor: pointer;
 }
-
-// .welcome-user {
-//   margin-top: 10px;
-//   margin-bottom: 10px;
-//   display: flex;
-//   align-items: center;
-//   flex-direction: column;
-// }
-
 
 input[type=text], input[type=password] {
   width: 10%;

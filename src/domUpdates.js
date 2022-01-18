@@ -1,9 +1,10 @@
-import Customer from './classes/customer';
-import Room from './classes/room'
-import { availableRooms, filterByRooms, findAvailableRooms, loadPage, filteredRoomType  } from  './scripts'
+
+import { availableRooms, filterByRooms, findAvailableRooms, loadPage, filteredRoomType, customers } from  './scripts'
 
 let date;
 let dropDownSelection;
+let customerindex;
+
 // Query Selectors
 const loginPage = document.querySelector('.login');
 const loginBtn = document.querySelector('.login-page-btn');
@@ -17,7 +18,13 @@ const welcomeMessage = document.querySelector('.welcome-user');
 const displayAvailableRooms = document.querySelector('.checkin-board');
 const grabDropDown = document.querySelector('#room-types');
 const dropDrownBtn = document.querySelector('#dropDownBtn');
-const filteredRooms = document.querySelector('.filteredRooms')
+const filteredRooms = document.querySelector('.filteredRooms');
+const username = document.querySelector('#username');
+const password = document.querySelector('#password');
+let bookMe;
+
+
+
 const domUpdates = {
   hideLoginPage() {
     loginPage.classList.add('hidden');
@@ -46,6 +53,8 @@ const domUpdates = {
 
   // works
   welcomeUserMessage(customer, bookings, rooms) {
+    console.log(customerindex)
+    console.log(customers[customerindex])
     customer.currentBookings(bookings)
     const totalCost = customer.calculateTotalCost(rooms)
     welcomeMessage.innerHTML = `<h2>Welcome To The Overlook Hotel ${customer.name}</h2> 
@@ -75,9 +84,12 @@ const domUpdates = {
           <p>bedSize: ${room.bedSize}</p>
           <p>numBeds: ${room.numBeds}</p>
           <p>costPerNight: ${room.costPerNight}</p>
+          <button class="bookMe">Book Me</button>
           </section>
            `
     })
+    bookMe = document.querySelectorAll('.bookMe')
+    this.bookARoom(bookMe)
   },
 
 
@@ -96,26 +108,41 @@ const domUpdates = {
     filteredRooms.innerHTML = ' '
     filteredRoomType.forEach(room => {
       filteredRooms.innerHTML += `
-        <section class="filteredRooms">
+        <section class="filteredRoomsdiv">
           <p>rooms Information:</p>
           <p>room number: ${room.number}</p>
           <p>roomType: ${room.roomType}<p>
           <p>bedSize: ${room.bedSize}</p>
           <p>numBeds: ${room.numBeds}</p>
           <p>costPerNight: ${room.costPerNight}</p>
-          </section>
-           `
+          <button class="bookMe">Book Me</button>
+        </section>
+        `
+    })
+    bookMe = document.querySelectorAll('.bookMe')
+    this.bookARoom(bookMe)
+  },
+
+  bookARoom(bookMe) {
+    bookMe.forEach(book => {
+      book.addEventListener('click', function(event) {
+        console.log(event.target.parentNode)
+      })
     })
   }
+
 }
 
 // event listeners
 window.addEventListener('load', function () {
-  loadPage();
+  loadPage(customerindex);
 })
 
-loginBtn.addEventListener('click', function()  {
-  // console.log(event)
+loginBtn.addEventListener('click', function(event)  {
+  console.log(event)
+  customerindex = username.value.split('customer')[1]
+  console.log('yooo', customerindex)
+  // console.log(password.value)
   domUpdates.hideLoginPage();
   domUpdates.showUserDashboard();
 

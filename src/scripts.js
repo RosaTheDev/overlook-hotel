@@ -14,7 +14,7 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 //imports
 import { bookingsData, customersData, roomsData } from './apiCalls';
-import domUpdates, { dropDownSelection }  from './domUpdates';
+import domUpdates  from './domUpdates';
 import Customer from './classes/customer';
 import Booking from './classes/booking'
 import Room from './classes/room';
@@ -28,7 +28,7 @@ let availableRooms;
 let filteredRoomType
 
 // on page load
-const loadPage = () => {
+const loadPage = (customerindex) => {
   Promise.all([customersData, bookingsData, roomsData])
     .then(data => {
       // customers
@@ -37,8 +37,9 @@ const loadPage = () => {
       })
 
       //random customers
+      // customer = new Customer(customers[customerindex - 1])
       customer = new Customer(customers[Math.floor(Math.random() * customers.length)])
-      // console.log(customer)
+      console.log(customerindex)
 
       //bookings 
       bookings = data[1].bookings.map(booking => {
@@ -80,4 +81,4 @@ const filterByRooms = (dropDownSelection) => {
 }
 
 // console.log(date)
-export { customer, bookings, rooms, availableRooms, filteredRoomType, loadPage, findAvailableRooms, filterByRooms}
+export { customer, customers, bookings, rooms, availableRooms, filteredRoomType, loadPage, findAvailableRooms, filterByRooms}
