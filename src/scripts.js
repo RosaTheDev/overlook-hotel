@@ -12,19 +12,19 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 
 
-
-import domUpdates, { bookNow, BookRoomBtn } from './domUpdates';
+//imports
+import { bookingsData, customersData, roomsData } from './apiCalls';
+import domUpdates  from './domUpdates';
 import Customer from './classes/customer';
 import Booking from './classes/booking'
 import Room from './classes/room';
 
-import { calendarSubmitBtn, loginBtn } from './domUpdates';
-import { bookingsData, customersData, roomsData } from './apiCalls';
-
+// global variables
 let customers;
 let customer
 let bookings;
 let rooms;
+let availableRooms;
 
 // on page load
 const loadPage = () => {
@@ -56,26 +56,16 @@ const loadPage = () => {
     })
 }
 
+const findAvailableRooms = (date) => {
+  let slashDate = date.split('-').join('/');
+  console.log(slashDate)
+  customer.bookingByDate(slashDate, bookings)
+  customer.findAvailableRooms(rooms)
+  availableRooms = customer.availableRooms.map(room => {
+    return new Room(room)
+  });
+  domUpdates.avilRooms();
+}
 
-window.addEventListener('load', function() {
-  loadPage()
-})
-// change this
-loginBtn.addEventListener('click', function(event) {
-  console.log(event)
-  domUpdates.hideLoginPage()
-  domUpdates.showUserDashboard()
-}) 
-//  to be when the user clicks the login button
-
-BookRoomBtn.addEventListener('click', function(event) {
-  console.log(event)
-  domUpdates.hideUserDashboard();
-  domUpdates.showBookingPage
-})
-calendarSubmitBtn.addEventListener('click', function(event) {
-  domUpdates.grabdate(event)
-})
-
-
-export { customer, bookings, rooms}
+// console.log(date)
+export { customer, bookings, rooms, availableRooms, loadPage, findAvailableRooms}

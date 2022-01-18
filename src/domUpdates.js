@@ -1,16 +1,21 @@
 import Customer from './classes/customer';
+import Room from './classes/room'
+import { availableRooms, findAvailableRooms, loadPage  } from  './scripts'
 
+let date;
 // Query Selectors
 const loginPage = document.querySelector('.login');
 const loginBtn = document.querySelector('.login-page-btn');
 const userDashboard = document.querySelector('.main-dashboard');
 const bookingInfoPage = document.querySelector('.dashboard');
-const BookRoomBtn = document.querySelector('.book-now-btn')
+const BookRoomBtn = document.querySelector('#book-now-btn')
+const calendarSubmitBtn = document.querySelector('#calendarCheckInBtn');
+const grabCalendar = document.querySelector('#calendar-start');
 const roomBooking = document.querySelector('.booking-a-room');
 const welcomeMessage = document.querySelector('.welcome-user');
+const displayAvRooms = document.querySelector('.checkin-board')
 const bookNow = document.querySelector('#book-now-btn');
 const dateControl = document.querySelector('input[type="date"]');
-const calendarSubmitBtn = document.querySelector('input[type="submit"]');
 
 const domUpdates = {
   hideLoginPage() {
@@ -28,12 +33,15 @@ const domUpdates = {
     roomBooking.classList.remove('hidden');
   },
 
+  // on page load log in 
+
+  // 
+
+  // works
   welcomeUserMessage(customer, bookings, rooms) {
+
     customer.currentBookings(bookings)
     const totalCost = customer.calculateTotalCost(rooms)
-    console.log(totalCost)
-    console.log(customer)
-    console.log(customer.presentBookings)
     welcomeMessage.innerHTML = `<h2>Welcome To The Overlook Hotel ${customer.name}</h2> 
   <h2>You Spent: $ ${totalCost}  So Far On Rooms!</h2>`
 
@@ -51,10 +59,58 @@ const domUpdates = {
     })
   },
 
+  avilRooms() {
+    console.log(availableRooms)
+    availableRooms.forEach(room => {
+      displayAvRooms.innerHTML += `
+    <section class="rooms-table">
+    <tr>
+    <td>rooms Information:</td>
+    <td>room number: ${room.number}</td>
+    <td>roomType: ${room.roomType}<td>
+    <td>bidet: ${room.bidet}</td>
+    <td>bedSize: ${room.bedSize}</td>
+    <td>numBeds: ${room.numBeds}</td>
+    <td>costPerNight: ${room.costPerNight}</td>
+    </tr>
+    </section>
+    `
+    })
+  },
+  // filter by date && room type page
+
   grabdate(event) {
     event.preventDefault();
-    console.log(dateControl.value)
-  }
+    date = grabCalendar.value
+    // console.log(grabCalendar.value)
+  } 
 }
-export { welcomeMessage, bookingInfoPage, dateControl, calendarSubmitBtn, bookNow, loginBtn,  BookRoomBtn};
+
+// event listeners
+window.addEventListener('load', function () {
+  loadPage();
+})
+
+loginBtn.addEventListener('click', function()  {
+  // console.log(event)
+  domUpdates.hideLoginPage();
+  domUpdates.showUserDashboard();
+
+})
+
+BookRoomBtn.addEventListener('click', function(event) {
+  console.log(event)
+  domUpdates.hideUserDashboard();
+  domUpdates.showBookingPage()
+  findAvailableRooms();
+})
+
+
+calendarSubmitBtn.addEventListener('click', function (event) {
+  domUpdates.grabdate(event)
+  findAvailableRooms(date);
+})
+
+
+export {date};
 export default domUpdates;
