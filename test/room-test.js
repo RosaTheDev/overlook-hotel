@@ -1,8 +1,6 @@
 import { expect } from 'chai';
 import roomData from './test-data/room-data'
 import Room from '../src/classes/room'
-import customer from './test-data/customer-data';
-
 
 describe('Room', () => {
   let room;
