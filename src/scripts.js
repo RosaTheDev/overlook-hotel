@@ -16,7 +16,6 @@ console.log('This is the JavaScript entry file - your code begins here.');
 //imports
 import { fetchData, postBooking } from './apiCalls';
 import domUpdates  from './domUpdates';
-import { customerIndex } from './domUpdates';
 import Customer from './classes/customer';
 import Booking from './classes/booking'
 import Room from './classes/room';
@@ -37,8 +36,7 @@ const loadPage = (customerIndex) => {
       customer  = data.map(customer => {
         return new Customer(customer)
       }).find(customer => customer.id === Number(customerIndex))
-      console.log('working', customer)
-      console.log(data)
+
       
       //bookings 
       bookings = data[1].bookings.map(booking => {
@@ -57,7 +55,6 @@ const loadPage = (customerIndex) => {
   
 const findAvailableRooms = (date) => {
   let slashDate = date.split('-').join('/');
-  console.log(slashDate)
   customer.bookingByDate(slashDate, bookings)
   customer.findAvailableRooms(rooms)
   availableRooms = customer.availableRooms.map(room => {
@@ -67,16 +64,12 @@ const findAvailableRooms = (date) => {
 }
 
 const filterByRooms = (dropDownSelection) => {
-  console.log(dropDownSelection)
-  console.log(customer)
-
   if (customer.filteredRoomTypes.length > 0) {
     customer.filteredRoomTypes = [];
   }
 
   customer.filterByRoomType(dropDownSelection)
   filteredRoomType = customer.filteredRoomTypes
-  console.log('f', filteredRoomType)
   domUpdates.dropDownSelection(filteredRoomType)
 }
 
@@ -88,9 +81,7 @@ const bookRoom = (currentDate, roomNumb) => {
     date: slashDate,
     roomNumber: roomNumb
   }
-  console.log(currentRoom)
   postBooking(currentRoom)
 }
 
-// console.log(date)
 export { customer, customers, bookings, rooms, availableRooms, filteredRoomType, loadPage, findAvailableRooms, filterByRooms, bookRoom}

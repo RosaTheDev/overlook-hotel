@@ -41,8 +41,6 @@ class Customer {
   }
 
   filterByRoomType(roomPrefrance) {
-    console.log('customer class', this.filteredRoomTypes)
-    
     this.availableRooms.filter(room => {
       if (room.roomType === roomPrefrance) {
         this.filteredRoomTypes.push(room)
@@ -52,7 +50,6 @@ class Customer {
 
 
   calculateTotalCost(rooms) {
-
     let totalCostArray = this.presentBookings.map(booking => {
       let foundRooom = rooms.filter(room => {
         if (room.number === booking.roomNumber) {

@@ -2,10 +2,6 @@ import { expect } from 'chai'; import customerData from './test-data/customer-da
 import bookingData from './test-data/booking-data'
 import roomData from './test-data/room-data'
 import Customer from '../src/classes/customer';
-import bookings from './test-data/booking-data';
-import rooms from './test-data/room-data';
-// import { roomsData } from '../src/apiCalls';
-
 
 describe('Customer', () => {
   let customer;

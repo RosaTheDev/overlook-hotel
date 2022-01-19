@@ -1,9 +1,6 @@
 
-import { availableRooms, filterByRooms, findAvailableRooms, loadPage, filteredRoomType, customers, bookRoom } from  './scripts'
+import { availableRooms, filterByRooms, findAvailableRooms, loadPage, filteredRoomType, bookRoom } from  './scripts'
 
-let date;
-let dropDownSelection;
-let customerIndex;
 
 // Query Selectors
 const loginPage = document.querySelector('.login');
@@ -20,13 +17,17 @@ const grabDropDown = document.querySelector('#room-types');
 const dropDrownBtn = document.querySelector('#dropDownBtn');
 const filteredRooms = document.querySelector('.filteredRooms');
 const username = document.querySelector('#username');
-const password = document.querySelector('#password');
 
+// global variables
 let bookMe;
 let roomNumb;
+let date;
+let dropDownSelection;
+let customerIndex;
 
 
 const domUpdates = {
+  // hide / show functions
   hideLoginPage() {
     loginPage.classList.add('hidden');
   },
@@ -48,17 +49,11 @@ const domUpdates = {
   showFilteredRooms() {
     filteredRooms.classList.remove('hidden')
   },
+
   // on page load log in 
-
-  // 
-
-  // works
   welcomeUserMessage(customer, bookings, rooms) {
-  
     customer.currentBookings(bookings)
     const totalCost = customer.calculateTotalCost(rooms)
-    // console.log(customer.presentBookings)
-    
     welcomeMessage.innerHTML = `<h2>Welcome To The Overlook Hotel ${customer.name}</h2> 
      <h2>You Spent: $ ${totalCost}  So Far On Rooms!</h2>`
     if (customer.presentBookings.length > 0) {
@@ -79,10 +74,8 @@ const domUpdates = {
   },
 
   avilableRooms() {
-    console.log(availableRooms)
     displayAvailableRooms.innerHTML = ' '
     if (availableRooms.length > 0) {
-      // console.log('hello')
       availableRooms.forEach(room => {
         displayAvailableRooms.innerHTML += `
         <section class="rooms" id=${room.number}>
@@ -102,26 +95,14 @@ const domUpdates = {
     }
     bookMe = document.querySelectorAll('.bookMe')
     roomNumb = document.querySelector(".roomNumber")
-    // console.log('bookMe', roomNumb)
     this.bookARoom(bookMe, roomNumb)
   },
-
-
-  // filter by date && room type page
-
-  grabdate(event) {
-    event.preventDefault();
-    date = grabCalendar.value
-  },
-
+  
   dropDownSelection() {
     filteredRooms.innerHTML = ' '
     this.hideCheckInBoard()
     this.showFilteredRooms()
-
-    console.log('domupdates', filteredRoomType)
     if (filteredRoomType.length > 0) {
-      console.log('hello')
       filteredRoomType.forEach(room => {
         filteredRooms.innerHTML += `
         <section class="filteredRoomsdiv">
@@ -142,9 +123,14 @@ const domUpdates = {
     bookMe = document.querySelectorAll('.bookMe')
     this.bookARoom(bookMe)
   },
+  
+  // grabbing functions
+  grabdate(event) {
+    event.preventDefault();
+    date = grabCalendar.value
+  },
 
   bookARoom(bookMe) {
-    // console.log(roomNumb)
     bookMe.forEach(book => {
       book.addEventListener('click', function(event) {
         console.log(event.target.parentNode.id)
@@ -161,16 +147,13 @@ const domUpdates = {
 // event listeners
 
 loginBtn.addEventListener('click', function(event)  {
-  console.log(event)
   customerIndex = username.value.split('customer')[1]
-  console.log('yooo', customerIndex)
   domUpdates.hideLoginPage();
   domUpdates.showUserDashboard();
   loadPage(customerIndex);
 })
 
 BookRoomBtn.addEventListener('click', function(event) {
-  console.log(event)
   domUpdates.hideUserDashboard();
   domUpdates.showBookingPage()
   findAvailableRooms();
@@ -180,8 +163,6 @@ BookRoomBtn.addEventListener('click', function(event) {
 calendarSubmitBtn.addEventListener('click', function (event) {
   domUpdates.grabdate(event)
   findAvailableRooms(date);
-  // this.bookARoom(bookMe)
-  // bookRoom(date)
 })
 
 grabDropDown.addEventListener('change', function(event) {
@@ -194,7 +175,6 @@ dropDrownBtn.addEventListener('click', function(event) {
   findAvailableRooms(date);
   filterByRooms(dropDownSelection)
 })
-
 
 export {date,  dropDownSelection, customerIndex};
 export default domUpdates;
