@@ -4,7 +4,7 @@ Looking for your next adventure? Find your excitement at the Overlook Hotel.
 ---
 
 ### Sumary 
-When you first visit the Oveloook Hotel page, you will need to login. On a successful login, you will view the customer dashboard. The dashboard greets the user and displys the TOTAL amount spent on rooms. This is where you are able to see all the past, present, and future bookings. In the navigation bar you will see a 'Book Now' button click there to move on to the booking page. In the booking page, select a date for when you will like to book a room, you will be able to see all the rooms avaiable for that date, if you like to filter by room type, click on the drop down box to choose your perfered room. If you like to book that room then click on the 'Book Me' button underneath the information for the room. Refresh the page and login once more and you will see your new booking on the bottom of the page.
+When you first visit the Overlook Hotel page, you will need to login. On a successful login, you will view the customer dashboard. The dashboard greets the user and displys the TOTAL amount spent on rooms. This is where you are able to see all the past, present, and future bookings. In the navigation bar you will see a 'Book Now' button click there to move on to the booking page. In the booking page, select a date for when you will like to book a room, you will be able to see all the rooms avaiable for that date, if you like to filter by room type, click on the drop down box to choose your perfered room. If you like to book that room then click on the 'Book Me' button underneath the information for the room. Refresh the page and login once more and you will see your new booking on the bottom of the page.
 
 ---
 
